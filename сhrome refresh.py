@@ -9,25 +9,24 @@ from webdriver_manager.chrome import ChromeDriverManager
 options = webdriver.ChromeOptions()
 options.add_experimental_option("detach", True)
 
-#установка актуального драйвера для хрома и запуск самого браузера
 driver = webdriver.Chrome(options=options, service=ChromeService(ChromeDriverManager().install()))
-
 base_url = "https://www.saucedemo.com" #адрес сайта
 driver.get(base_url) #открываем адрес сайта в браузере
 driver.maximize_window() #разворачиваем браузер в максимально возможном разрешении
 
-#с помощью XPATH и командой send_keys ищем строку логина и вводим имя "standard_user"
-user_name = driver.find_element(By.XPATH, "//input[@id='user-name']")
-user_name.send_keys("standard_user")
+user_name = driver.find_element(By.XPATH, "//input[@id='user-name']") #с помощью XPATH ищем элемент
+user_name.send_keys("standard_user") #вводим логин
+print ("ввод логина")
 
-#методом find_element с помощью XPATH и командой send_keys ищем строку пароля и вводим имя "secret_sauce"
+#с помощью XPATH ищем элемент
 password = driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div[1]/div/div/form/div[2]/input")
-password.send_keys("secret_sauce")
+password.send_keys("secret_sauc") #вводим неверный пароль
+print("ввод пароля")
 
-#ищем елемент "логин" и командой "сlick" нажимаем на елемент
+#ищем элемент "логин" и командой "сlick" нажимаем на элемент
 login_button = driver.find_element(By.ID, "login-button")
 login_button.click()
+print("click login button")
 
-
-#time.sleep(5) #говорим браузеру ничего не делать в течении 5 секунд
-#driver.close() #закрываем браузер
+time.sleep(3) #говорим браузеру бездействовать в течении 5 секунд
+driver.refresh() #обновить страницу
