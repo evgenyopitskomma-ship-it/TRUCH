@@ -28,5 +28,8 @@ login_button = driver.find_element(By.ID, "login-button")
 login_button.click()
 print("click login button")
 
-time.sleep(3) #говорим браузеру бездействовать в течении 5 секунд
+time.sleep(3) #говорим браузеру бездействовать в течении 3 секунд
 driver.refresh() #обновить страницу
+
+time.sleep(3) #говорим браузеру бездействовать в течении 3 секунд
+driver.close() #закрыть браузер
